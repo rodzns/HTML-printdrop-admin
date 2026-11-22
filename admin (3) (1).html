@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PrintDrop | Print shop staff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/logo-main.png">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="logos">
+    <img src="images/logo-main.png" alt="Print Drop Printing Shop logo">
+    <img src="images/logo-gc.png" alt="Gordon College logo">
+  </div>
+  <div class="right">
+    <span>Made by KUPL</span>
+    <button type="button" id="theme" class="icon" aria-label="Switch to dark mode">&#9790;</button>
+    <button type="button" id="logout" class="btn hide">Log out</button>
+  </div>
+</header>
+
+<!-- 1. login -->
+<section id="loginView">
+  <form id="loginForm" class="card login" novalidate>
+    <h1>Print shop staff login</h1>
+    <label for="pw">Password</label>
+    <input type="password" id="pw" autocomplete="current-password">
+    <p class="err" id="lerr" role="alert"></p>
+    <button type="submit" class="btn big">Log in</button>
+  </form>
+</section>
+
+<!-- 2. loading screen -->
+<div id="loader" class="loader hide" role="status" aria-live="polite">
+  <img class="spin" src="images/logo-main.png" alt="">
+  <p>Loading dashboard...</p>
+  <div class="meter"><i></i></div>
+</div>
+
+<!-- 3. dashboard -->
+<main id="dash" class="hide">
+  <div class="head">
+    <img class="brand" src="images/logo-printdrop.png" alt="Print Drop">
+    <h1 class="title">Dashboard</h1>
+  </div>
+
+  <div class="status-row">
+    <h2 class="big">STATUS</h2>
+    <div class="stats">
+      <div class="stat"><b id="s1">0</b><span>Pending</span></div>
+      <div class="stat"><b id="s2">0</b><span>Received</span></div>
+      <div class="stat hide"><b id="s3">0</b><span>Unused</span></div>
+      <div class="stat"><b id="s4">&#8369;0</b><span>Estimated total</span></div>
+    </div>
+  </div>
+
+  <div class="filters">
+    <input type="search" id="q" placeholder="Search name, ID, file or queue number" aria-label="Search orders">
+    <select id="f" aria-label="Filter by status">
+      <option value="">All status</option>
+      <option>Pending</option>
+      <option>Received</option>
+    </select>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Queue</th><th>Student</th><th>File</th><th>Print settings</th><th>Price</th><th>Status</th><th>Actions</th></tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <p class="empty hide" id="empty">No print requests yet. New files from the student page show up here.</p>
+  </div>
+</main>
+
+<!-- delete confirmation -->
+<dialog id="confirm">
+  <h2>Delete this request?</h2>
+  <p id="cmsg"></p>
+  <div class="cbtns">
+    <button type="button" class="btn ghost" id="cno">Cancel</button>
+    <button type="button" class="btn" id="cyes">Delete</button>
+  </div>
+</dialog>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
